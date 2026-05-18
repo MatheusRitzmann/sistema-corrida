@@ -1,0 +1,279 @@
+/*fontes do google*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/*variavel de cor*/
+:root {
+    --first-color: hsl(208, 92%, 54%);
+    --first-color-alt: hsl(208, 88%, 50%);
+    --title-color: hsl(220, 68%, 4%);
+    --white-color: hsl(0, 0%, 100%);
+    --text-color: hsl(220, 15%, 66%);
+    --body-color: hsl(0, 0%, 100%);
+    --container-color: hsl(220, 50%, 97%);
+}
+
+/*base da pagina*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--body-color);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+/*curvatura da imagem de corrida*/
+.login__blob {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 0;
+    display: none;
+}
+
+
+@media (min-width: 992px) {
+    .login__blob {
+        display: block;
+    }
+}
+
+/*area de login*/
+.login-wrapper {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.login-panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/*titulo*/
+.login__title {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .login__title {
+        text-align: left;
+    }
+}
+
+/*box de login*/
+.login__box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--container-color);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.login__input {
+    background: none;
+    border: 3px solid transparent;
+    border-radius: 1rem;
+    width: 100%;
+    padding: 1.5rem 2.5rem 1.5rem 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: .938rem;
+    color: var(--title-color);
+    transition: border-color .4s, padding .4s;
+    outline: none;
+    z-index: 1;
+}
+
+
+.login__input:autofill {
+    transition: background-color 6000s, color 6000s;
+}
+
+.login__label {
+    position: absolute;
+    left: 1.25rem;
+    font-weight: 600;
+    font-size: .938rem;
+    color: var(--text-color);
+    pointer-events: none;
+    transition: transform .4s, font-size .4s, color .4s;
+    z-index: 2;
+}
+
+.login__icon {
+    position: absolute;
+    right: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    transition: color .4s;
+    z-index: 2;
+}
+
+.login__password {
+    cursor: pointer;
+}
+
+.login__input:focus ~ .login__label,
+.login__input:not(:placeholder-shown) ~ .login__label {
+    transform: translateY(-12px);
+    font-size: .688rem;
+}
+
+.login__input:focus {
+    border-color: var(--first-color);
+    padding-block: 2rem 1rem;
+}
+
+.login__input:not(:placeholder-shown):not(:focus) {
+    padding-block: 2rem 1rem;
+}
+
+/* Muda cor do label */
+.login__input:focus ~ .login__label,
+.login__input:focus ~ .login__icon {
+    color: var(--first-color);
+}
+
+/*botão esqueceu a senha*/
+.login__forgot {
+    display: block;
+    width: max-content;
+    margin: .5rem 0 0 auto;
+    font-size: .813rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color .4s;
+}
+
+.login__forgot:hover {
+    color: var(--first-color);
+}
+
+/*botão de login*/
+.login__button {
+    width: 100%;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-block: 1.1rem;
+    border-radius: 4rem;
+    border: none;
+    margin-block: 2rem;
+    cursor: pointer;
+    transition: background-color .4s, box-shadow .4s;
+}
+
+.login__button:hover {
+    background-color: var(--first-color-alt);
+    box-shadow: 0 8px 24px hsla(208, 92%, 32%, .3);
+}
+
+/* login com google*/
+.login__social-title {
+    text-align: center;
+    font-size: .813rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.login__social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.login__social-link {
+    width: 32px;
+    height: 32px;
+    background-color: var(--body-color);
+    box-shadow: 0 4px 8px hsla(0, 0%, 0%, .1);
+    border-radius: .5rem;
+    display: grid;
+    place-items: center;
+    transition: transform .4s;
+}
+
+.login__social-link:hover {
+    transform: translateY(-.25rem);
+}
+
+.login__social-img {
+    width: 1rem;
+}
+
+
+.login__switch {
+    text-align: center;
+    font-size: .813rem;
+}
+
+.login__switch-btn {
+    background: none;
+    border: none;
+    color: var(--first-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: .813rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color .4s;
+    padding: 0;
+}
+
+.login__switch-btn:hover {
+    color: var(--first-color-alt);
+}
+
+/*transação de paineis*/
+.login__access,
+.login__register {
+    transition: transform .4s, opacity .4s .1s;
+}
+
+/* botão de cadastro escondido */
+.login__register {
+    display: none;
+    opacity: 0;
+    transform: translateX(15rem);
+    pointer-events: none;
+}
+
+/* olho que tudo vê */
+.login__register.visible {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: initial;
+}
+
+/* esconder painel */
+.login__access.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(-15rem);
+    pointer-events: none;
+}
+
+/* nome e sobrenome */
+@media (min-width: 576px) {
+    .login__group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .login__group .login__box {
+        margin-bottom: 0;
+    }
+}

@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema Corrida</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-    <!-- CSS personalizado -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
@@ -38,6 +37,13 @@
         <div class="container login-panel">
             <div class="row justify-content-start">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+                <!-- Logo -->
+                    <div class="mb-4">
+                     <img src="{{ asset('img/logo.png') }}" alt="Velox" style="width: 120px;">
+                        </div>
+
+                            
 
                     <h1 class="login__title">Entre na sua conta</h1>
 
@@ -70,7 +76,7 @@
                         <button type="submit" class="login__button">Entrar</button>
                     </form>
 
-                    <!-- Login pelas redes sociais -->
+                    
                     <p class="login__social-title">Ou entre com</p>
                     <div class="login__social-links">
                         <a href="#" class="login__social-link">
@@ -84,7 +90,7 @@
                         </a>
                     </div>
 
-                    <!-- Link para cadastro -->
+                    
                     <p class="login__switch">
                         Ainda não possui uma conta?
                         <a href="/cadastro" class="login__switch-btn">Criar conta</a>
@@ -95,9 +101,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- JavaScript personalizado -->
     <script src="{{ asset('js/main.js') }}"></script>
 
 </body>

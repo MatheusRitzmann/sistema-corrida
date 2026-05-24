@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-  
+    // Exibe a página de login
     public function index()
     {
         return view('autenticacao.login');
@@ -24,13 +24,29 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credenciais)) {
-    $request->session()->regenerate();
-    return redirect('/'); // vai para a página inicial após login
-}
+            $request->session()->regenerate();
+
+            // Redireciona conforme o nível de acesso
+            $role = Auth::user()->role;
+
+            if ($role === 'master') {
+                return redirect('/master');
+            } elseif ($role === 'admin') {
+                return redirect('/admin');
+            } else {
+                return redirect('/');
+            }
+        }
 
         return back()->withErrors([
             'email' => 'E-mail ou senha incorretos.',
         ]);
+    }
+
+    // Exibe a página de cadastro
+    public function cadastroView()
+    {
+        return view('autenticacao.cadastro');
     }
 
     // Processa o cadastro
@@ -60,10 +76,4 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-
-    // Exibe a página de cadastro
-public function cadastroView()
-{
-    return view('autenticacao.cadastro');
-}
 }

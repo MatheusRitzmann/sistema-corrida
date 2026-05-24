@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Sistema Corrida</title>
-
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-    <!-- CSS personalizado -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 </head>
 <body>
 
@@ -38,6 +36,12 @@
         <div class="container login-panel">
             <div class="row justify-content-start">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <!-- Logo -->
+                        <div class="mb-4">
+                            <img src="{{ asset('img/logo.png') }}" alt="Velox" style="width: 120px;">
+                            </div>
+
+
 
                     <h1 class="login__title">Criar nova conta</h1>
 
@@ -104,7 +108,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        /*=============== MOSTRAR/OCULTAR SENHA ===============*/
+        /* Olho que mostra ou escode olho */
         const passwordRegister = (loginPass, loginEye) => {
             const input   = document.getElementById(loginPass),
                   iconEye = document.getElementById(loginEye)

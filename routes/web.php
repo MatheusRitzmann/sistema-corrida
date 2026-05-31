@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\DashboardController;
 
-/*=============== PÁGINAS PÚBLICAS ===============*/
+/*=============== AREA DO LOGIN ===============*/
 
 // Página inicial
 Route::get('/', function () {
@@ -41,7 +42,7 @@ Route::middleware(['auth', 'master'])->prefix('master')->group(function () {
     Route::post('/criar-admin', [AdminController::class, 'criarAdmin'])->name('master.criarAdmin.store');
 });
 
-/*=============== USUÁRIOS ===============*/
+/*=============== USUÁRIOS ADM ===============*/
 
 // Listagem — admin e master podem ver
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -67,4 +68,12 @@ Route::middleware(['auth', 'master'])->group(function () {
     Route::get('/masters/{id}/editar', [UsuarioController::class, 'editarMaster'])->name('masters.editar');
     Route::post('/masters/{id}/editar', [UsuarioController::class, 'atualizarMaster'])->name('masters.atualizar');
     Route::post('/masters/{id}/deletar', [UsuarioController::class, 'deletarMaster'])->name('masters.deletar');
+});
+
+/*=============== ÁREA DO USUÁRIO ===============*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('usuario.dashboard');
+    Route::post('/dashboard/publicar', [DashboardController::class, 'publicar'])->name('usuario.publicar');
+    Route::post('/dashboard/like/{postId}', [DashboardController::class, 'like'])->name('usuario.like');
+    Route::post('/dashboard/comentar/{postId}', [DashboardController::class, 'comentar'])->name('usuario.comentar');
 });

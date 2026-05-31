@@ -12,7 +12,31 @@ class AdminController extends Controller
     // Página principal da área admin
     public function index()
     {
-        return view('admin.index');
+        $totalUsuarios = User::where('role', 'user')->count();
+        $usuariosMes   = User::where('role', 'user')
+                            ->whereMonth('created_at', Carbon::now()->month)
+                            ->count();
+
+        // Dados para o gráfico — últimos 6 meses
+        $meses  = [];
+        $totais = [];
+
+        for ($i = 5; $i >= 0; $i--) {
+            $data     = Carbon::now()->subMonths($i);
+            $meses[]  = $data->translatedFormat('M/y');
+            $totais[] = User::whereMonth('created_at', $data->month)
+                            ->whereYear('created_at', $data->year)
+                            ->count();
+        }
+
+        $graficoDados = [
+            'meses'  => $meses,
+            'totais' => $totais,
+        ];
+
+        return view('admin.index', compact(
+            'totalUsuarios', 'usuariosMes', 'graficoDados'
+        ));
     }
 
     // Página principal da área master
@@ -25,7 +49,7 @@ class AdminController extends Controller
                             ->whereMonth('created_at', Carbon::now()->month)
                             ->count();
 
-        
+        // Dados para o gráfico — últimos 6 meses
         $meses  = [];
         $totais = [];
 
@@ -53,7 +77,7 @@ class AdminController extends Controller
         return view('master.criar-admin');
     }
 
-    
+    // Processa a criação do admin
     public function criarAdmin(Request $request)
     {
         $request->validate([

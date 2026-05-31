@@ -53,16 +53,26 @@ class LoginController extends Controller
     public function cadastro(Request $request)
     {
         $request->validate([
-            'nome'      => 'required|string',
-            'sobrenome' => 'required|string',
-            'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:6',
+            'nome'            => 'required|string',
+            'sobrenome'       => 'required|string',
+            'username'        => 'required|string|unique:users',
+            'cpf'             => 'required|string|unique:users',
+            'rg'              => 'nullable|string',
+            'data_nascimento' => 'required|date',
+            'telefone'        => 'required|string',
+            'email'           => 'required|email|unique:users',
+            'password'        => 'required|min:6',
         ]);
 
         User::create([
-            'name'     => $request->nome . ' ' . $request->sobrenome,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
+            'name'            => $request->nome . ' ' . $request->sobrenome,
+            'username'        => $request->username,
+            'cpf'             => $request->cpf,
+            'rg'              => $request->rg,
+            'data_nascimento' => $request->data_nascimento,
+            'telefone'        => $request->telefone,
+            'email'           => $request->email,
+            'password'        => Hash::make($request->password),
         ]);
 
         return redirect('/login')->with('sucesso', 'Conta criada com sucesso!');

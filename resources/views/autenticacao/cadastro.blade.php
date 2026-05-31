@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Sistema Corrida</title>
-    
+    <title>Cadastro - Velox</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
@@ -31,38 +31,30 @@
         </g>
     </svg>
 
-    <!-- Área principal da página -->
+    <!-- Área principal -->
     <div class="login-wrapper">
         <div class="container login-panel">
             <div class="row justify-content-start">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
                     <!-- Logo -->
-                        <div class="mb-4">
-                            <img src="{{ asset('img/logo.png') }}" alt="Velox" style="width: 120px;">
-                            </div>
-
-
+                    <div class="mb-4">
+                        <img src="{{ asset('img/logo.png') }}" alt="Velox" style="width: 120px;">
+                    </div>
 
                     <h1 class="login__title">Criar nova conta</h1>
 
-                    <!-- Exibe erros de validação -->
+                    <!-- Erros -->
                     @if ($errors->any())
                         <div class="alert alert-danger rounded-3 mb-3">
                             {{ $errors->first() }}
                         </div>
                     @endif
 
-                    <!-- Exibe mensagem de sucesso -->
-                    @if (session('sucesso'))
-                        <div class="alert alert-success rounded-3 mb-3">
-                            {{ session('sucesso') }}
-                        </div>
-                    @endif
-
                     <form action="/cadastro" method="POST">
                         @csrf
 
-                        <!-- Campos nome e sobrenome -->
+                        <!-- Nome e Sobrenome -->
                         <div class="login__group mb-3">
                             <div class="login__box">
                                 <input type="text" id="nome" name="nome" required placeholder=" " class="login__input">
@@ -76,14 +68,48 @@
                             </div>
                         </div>
 
-                        <!-- Campo e-mail -->
+                        <!-- Username -->
+                        <div class="login__box">
+                            <input type="text" id="username" name="username" required placeholder=" " class="login__input">
+                            <label for="username" class="login__label">Nome de usuário</label>
+                            <i class="ri-at-line login__icon"></i>
+                        </div>
+
+                        <!-- CPF e RG -->
+                        <div class="login__group mb-3">
+                            <div class="login__box">
+                                <input type="text" id="cpf" name="cpf" required placeholder=" " class="login__input">
+                                <label for="cpf" class="login__label">CPF</label>
+                                <i class="ri-file-user-line login__icon"></i>
+                            </div>
+                            <div class="login__box">
+                                <input type="text" id="rg" name="rg" placeholder=" " class="login__input">
+                                <label for="rg" class="login__label">RG</label>
+                                <i class="ri-file-list-line login__icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- Data de nascimento e Telefone -->
+                        <div class="login__group mb-3">
+                            <div class="login__box">
+                                <input type="date" id="data_nascimento" name="data_nascimento" required placeholder=" " class="login__input">
+                                <label for="data_nascimento" class="login__label">Data de nascimento</label>
+                            </div>
+                            <div class="login__box">
+                                <input type="text" id="telefone" name="telefone" required placeholder=" " class="login__input">
+                                <label for="telefone" class="login__label">Telefone</label>
+                                <i class="ri-phone-line login__icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- E-mail -->
                         <div class="login__box">
                             <input type="email" id="email" name="email" required placeholder=" " class="login__input">
                             <label for="email" class="login__label">E-mail</label>
                             <i class="ri-mail-fill login__icon"></i>
                         </div>
 
-                        <!-- Campo senha -->
+                        <!-- Senha -->
                         <div class="login__box">
                             <input type="password" id="password" name="password" required placeholder=" " class="login__input">
                             <label for="password" class="login__label">Senha</label>
@@ -93,7 +119,7 @@
                         <button type="submit" class="login__button">Criar conta</button>
                     </form>
 
-                    <!-- Link para voltar ao login -->
+                    <!-- Link para login -->
                     <p class="login__switch">
                         Já possui uma conta?
                         <a href="/login" class="login__switch-btn">Entrar</a>
@@ -106,25 +132,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        /* Olho que mostra ou escode olho */
-        const passwordRegister = (loginPass, loginEye) => {
-            const input   = document.getElementById(loginPass),
-                  iconEye = document.getElementById(loginEye)
-
-            iconEye.addEventListener('click', () => {
-                // Alterna entre senha e texto
-                input.type === 'password' ? input.type = 'text'
-                                          : input.type = 'password'
-
-                // Troca o ícone
-                iconEye.classList.toggle('ri-eye-fill')
-                iconEye.classList.toggle('ri-eye-off-fill')
-            })
-        }
-        passwordRegister('password', 'loginPasswordCreate')
-    </script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 </html>

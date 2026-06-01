@@ -483,8 +483,8 @@
             <a href="{{ route('usuario.dashboard') }}" class="navbar-velox__link {{ request()->routeIs('usuario.dashboard') ? 'active' : '' }}">
                 <i class="ri-home-line"></i> Feed
             </a>
-            <a href="#" class="navbar-velox__link">
-                <i class="ri-trophy-line"></i> Corridas
+            <a href="{{ route('usuario.corridas') }}" class="navbar-velox__link {{ request()->routeIs('usuario.corridas*') ? 'active' : '' }}">
+            <i class="ri-trophy-line"></i> Corridas
             </a>
         </div>
 

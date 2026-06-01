@@ -395,8 +395,8 @@
         </a>
         @endif
 
-        <a href="#" class="sidebar__link">
-            <i class="ri-trophy-line"></i> Corridas
+        <a href="{{ route('master.corridas') }}" class="sidebar__link {{ request()->routeIs('master.corridas*') ? 'active' : '' }}">
+         <i class="ri-trophy-line"></i> Corridas
         </a>
     </nav>
 

@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PlanoController;
 use App\Http\Controllers\MetricaController;
 use App\Http\Controllers\SubscricaoController;
+use App\Http\Controllers\CorridaController;
+use App\Http\Controllers\InscricaoController;
 
 /*=============== AREA DO LOGIN ===============*/
 
@@ -126,4 +128,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/subscricao', [SubscricaoController::class, 'index'])->name('usuario.subscricao');
     Route::post('/subscricao/assinar', [SubscricaoController::class, 'assinar'])->name('usuario.subscricao.assinar');
+});
+/*=============== CORRIDAS — MASTER ===============*/
+Route::middleware(['auth', 'master'])->group(function () {
+    Route::get('/master/corridas', [CorridaController::class, 'indexMaster'])->name('master.corridas');
+    Route::get('/master/corridas/criar', [CorridaController::class, 'criar'])->name('master.corridas.criar');
+    Route::post('/master/corridas/criar', [CorridaController::class, 'salvar'])->name('master.corridas.salvar');
+    Route::get('/master/corridas/{id}/editar', [CorridaController::class, 'editar'])->name('master.corridas.editar');
+    Route::post('/master/corridas/{id}/editar', [CorridaController::class, 'atualizar'])->name('master.corridas.atualizar');
+    Route::post('/master/corridas/{id}/deletar', [CorridaController::class, 'deletar'])->name('master.corridas.deletar');
+    Route::get('/master/corridas/{id}/inscritos', [CorridaController::class, 'inscritos'])->name('master.corridas.inscritos');
+});
+
+/*=============== CORRIDAS — USUÁRIO ===============*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/corridas', [CorridaController::class, 'index'])->name('usuario.corridas');
+    Route::get('/corridas/{id}', [CorridaController::class, 'ver'])->name('usuario.corridas.ver');
+    Route::post('/corridas/{id}/inscrever', [InscricaoController::class, 'inscrever'])->name('usuario.corridas.inscrever');
+    Route::post('/corridas/{id}/cancelar', [InscricaoController::class, 'cancelar'])->name('usuario.corridas.cancelar');
+    Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('usuario.inscricoes');
 });

@@ -15,7 +15,7 @@
             @endif
 
             <div class="table-card">
-                <form action="{{ route('masters.store') }}" method="POST">
+                <form action="{{ route('master.criarAdmin.store') }}" method="POST">
                     @csrf
 
                     <div class="mb-3">

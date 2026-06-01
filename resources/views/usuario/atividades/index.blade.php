@@ -67,7 +67,7 @@
         </div>
     @empty
         <div class="vx-card text-center text-muted py-4">
-            Nenhuma atividade registrada ainda. 🏃
+            Nenhuma atividade registrada ainda. 
         </div>
     @endforelse
 

@@ -190,7 +190,7 @@
                     </div>
                 @empty
                     <div class="vx-card text-center text-muted py-4">
-                        Nenhuma publicação ainda. Seja o primeiro a publicar! 🏃
+                        Nenhuma publicação ainda. Seja o primeiro a publicar! 
                     </div>
                 @endforelse
             </div>

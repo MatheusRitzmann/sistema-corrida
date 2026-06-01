@@ -76,7 +76,7 @@
         @empty
             <div class="col-12">
                 <div class="vx-card text-center text-muted py-4">
-                    Nenhuma corrida disponível no momento. 🏃
+                    Nenhuma corrida disponível no momento. 
                 </div>
             </div>
         @endforelse

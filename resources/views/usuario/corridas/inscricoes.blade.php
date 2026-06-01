@@ -59,7 +59,7 @@
         </div>
     @empty
         <div class="vx-card text-center text-muted py-4">
-            Você ainda não se inscreveu em nenhuma corrida. 🏃
+            Você ainda não se inscreveu em nenhuma corrida. 
         </div>
     @endforelse
 

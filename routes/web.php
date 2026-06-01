@@ -7,6 +7,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AtividadeController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\PlanoController;
+use App\Http\Controllers\MetricaController;
+use App\Http\Controllers\SubscricaoController;
 
 /*=============== AREA DO LOGIN ===============*/
 
@@ -89,7 +92,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/atividades/{id}/deletar', [AtividadeController::class, 'deletar'])->name('usuario.atividades.deletar');
 });
 
-
 /*=============== CATEGORIAS — ADMIN ===============*/
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/categorias', [CategoriaController::class, 'index'])->name('admin.categorias');
@@ -98,4 +100,30 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/categorias/{id}/editar', [CategoriaController::class, 'editar'])->name('admin.categorias.editar');
     Route::post('/admin/categorias/{id}/editar', [CategoriaController::class, 'atualizar'])->name('admin.categorias.atualizar');
     Route::post('/admin/categorias/{id}/deletar', [CategoriaController::class, 'deletar'])->name('admin.categorias.deletar');
+});
+
+/*=============== PLANOS — ADMIN ===============*/
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/planos', [PlanoController::class, 'index'])->name('admin.planos');
+    Route::get('/admin/planos/criar', [PlanoController::class, 'criar'])->name('admin.planos.criar');
+    Route::post('/admin/planos/criar', [PlanoController::class, 'salvar'])->name('admin.planos.salvar');
+    Route::get('/admin/planos/{id}/editar', [PlanoController::class, 'editar'])->name('admin.planos.editar');
+    Route::post('/admin/planos/{id}/editar', [PlanoController::class, 'atualizar'])->name('admin.planos.atualizar');
+    Route::post('/admin/planos/{id}/deletar', [PlanoController::class, 'deletar'])->name('admin.planos.deletar');
+});
+
+/*=============== MÉTRICAS — ADMIN ===============*/
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/metricas', [MetricaController::class, 'index'])->name('admin.metricas');
+    Route::get('/admin/metricas/criar', [MetricaController::class, 'criar'])->name('admin.metricas.criar');
+    Route::post('/admin/metricas/criar', [MetricaController::class, 'salvar'])->name('admin.metricas.salvar');
+    Route::get('/admin/metricas/{id}/editar', [MetricaController::class, 'editar'])->name('admin.metricas.editar');
+    Route::post('/admin/metricas/{id}/editar', [MetricaController::class, 'atualizar'])->name('admin.metricas.atualizar');
+    Route::post('/admin/metricas/{id}/deletar', [MetricaController::class, 'deletar'])->name('admin.metricas.deletar');
+});
+
+/*=============== SUBSCRIÇÃO — USUÁRIO ===============*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/subscricao', [SubscricaoController::class, 'index'])->name('usuario.subscricao');
+    Route::post('/subscricao/assinar', [SubscricaoController::class, 'assinar'])->name('usuario.subscricao.assinar');
 });

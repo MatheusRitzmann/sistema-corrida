@@ -382,6 +382,13 @@
             <i class="ri-list-check"></i> Categorias
         </a>
 
+        <a href="{{ route('admin.planos') }}" class="sidebar__link {{ request()->routeIs('admin.planos*') ? 'active' : '' }}">
+             <i class="ri-vip-diamond-line"></i> Planos
+        </a>
+            <a href="{{ route('admin.metricas') }}" class="sidebar__link {{ request()->routeIs('admin.metricas*') ? 'active' : '' }}">
+            <i class="ri-bar-chart-box-line"></i> Métricas
+        </a>
+
         @if(Auth::user()->role === 'master')
         <a href="{{ route('masters.index') }}" class="sidebar__link {{ request()->routeIs('masters.*') ? 'active' : '' }}">
             <i class="ri-vip-crown-line"></i> Masters

@@ -16,11 +16,6 @@
     <div class="table-card">
         <div class="table-card__header">
             <div class="table-card__title">Lista de Masters</div>
-            @if(Auth::user()->role === 'master')
-                <a href="{{ route('masters.criar') }}" class="btn-new">
-                    <i class="ri-add-line"></i> Novo Master
-                </a>
-            @endif
         </div>
 
         <table class="table table-borderless mb-0">
@@ -46,14 +41,14 @@
                             <td>
                                 <div class="d-flex gap-2">
                                     <!-- Editar -->
-                                    <a href="{{ route('masters.editar', $master->id) }}" class="btn-new" style="padding: .35rem .75rem;">
+                                    <a href="{{ route('masters.editar', $master->id) }}" class="btn-new" style="padding:.35rem .75rem;">
                                         <i class="ri-edit-line"></i>
                                     </a>
                                     <!-- Deletar -->
                                     <form action="{{ route('masters.deletar', $master->id) }}" method="POST"
                                           onsubmit="return confirm('Tem certeza que deseja deletar este master?')">
                                         @csrf
-                                        <button type="submit" style="background: hsla(0, 80%, 55%, .12); color: hsl(0, 80%, 50%); border: none; border-radius: .5rem; padding: .35rem .75rem; cursor: pointer;">
+                                        <button type="submit" style="background:hsla(0,80%,55%,.12);color:hsl(0,80%,50%);border:none;border-radius:.5rem;padding:.35rem .75rem;cursor:pointer;">
                                             <i class="ri-delete-bin-line"></i>
                                         </button>
                                     </form>

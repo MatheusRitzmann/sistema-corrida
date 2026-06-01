@@ -475,6 +475,9 @@
         <a href="{{ route('usuario.atividades') }}" class="navbar-velox__link {{ request()->routeIs('usuario.atividades*') ? 'active' : '' }}">
             <i class="ri-run-line"></i> Atividades
         </a>
+        <a href="{{ route('usuario.subscricao') }}" class="navbar-velox__link {{ request()->routeIs('usuario.subscricao*') ? 'active' : '' }}">
+            <i class="ri-vip-diamond-line"></i> Planos
+        </a>
 
         <div class="navbar-velox__nav">
             <a href="{{ route('usuario.dashboard') }}" class="navbar-velox__link {{ request()->routeIs('usuario.dashboard') ? 'active' : '' }}">

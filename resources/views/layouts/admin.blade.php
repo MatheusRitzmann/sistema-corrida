@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Sistema Corrida') - Velox</title>
 
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Remix Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-    <!-- Google Fonts -->
+  
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chart.js -->
+   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Favicon -->
+  
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <style>
@@ -37,7 +37,7 @@
             color: var(--text-color);
         }
 
-        /*=============== SIDEBAR ===============*/
+        /*sidebar*/
         .sidebar {
             position: fixed;
             top: 0;
@@ -166,7 +166,7 @@
             flex-direction: column;
         }
 
-        /*=============== TOPBAR ===============*/
+        /*navbar de cima*/
         .topbar {
             height: var(--topbar-height);
             background: var(--card-bg);
@@ -206,13 +206,13 @@
             border-radius: 2rem;
         }
 
-        /*=============== CONTENT ===============*/
+        
         .content {
             flex: 1;
             padding: 2rem;
         }
 
-        /*=============== STAT CARDS ===============*/
+        /*box de estatisticas*/
         .stat-card {
             background: var(--card-bg);
             border-radius: 1rem;
@@ -257,7 +257,7 @@
             margin-top: .25rem;
         }
 
-        /*=============== CHART CARD ===============*/
+        
         .chart-card {
             background: var(--card-bg);
             border-radius: 1rem;
@@ -283,7 +283,7 @@
             color: var(--text-color);
         }
 
-        /*=============== TABLE CARD ===============*/
+        /*tabela do box*/
         .table-card {
             background: var(--card-bg);
             border-radius: 1rem;
@@ -354,7 +354,7 @@
 </head>
 <body>
 
-<!-- ── SIDEBAR ── -->
+<!-- sidebar -->
 <aside class="sidebar">
     <div class="sidebar__logo">
         <img src="{{ asset('img/logo.png') }}" alt="Velox" style="width: 140px;">
@@ -376,6 +376,10 @@
 
         <a href="{{ route('usuarios.index') }}" class="sidebar__link {{ request()->routeIs('usuarios.*') ? 'active' : '' }}">
             <i class="ri-group-line"></i> Usuários
+        </a>
+
+        <a href="{{ route('admin.categorias') }}" class="sidebar__link {{ request()->routeIs('admin.categorias*') ? 'active' : '' }}">
+            <i class="ri-list-check"></i> Categorias
         </a>
 
         @if(Auth::user()->role === 'master')

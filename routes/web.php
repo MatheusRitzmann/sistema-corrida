@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AtividadeController;
+use App\Http\Controllers\CategoriaController;
 
 /*=============== AREA DO LOGIN ===============*/
 
@@ -76,4 +78,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dashboard/publicar', [DashboardController::class, 'publicar'])->name('usuario.publicar');
     Route::post('/dashboard/like/{postId}', [DashboardController::class, 'like'])->name('usuario.like');
     Route::post('/dashboard/comentar/{postId}', [DashboardController::class, 'comentar'])->name('usuario.comentar');
+});
+
+/*=============== ATIVIDADES ===============*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/atividades', [AtividadeController::class, 'index'])->name('usuario.atividades');
+    Route::get('/atividades/criar', [AtividadeController::class, 'criar'])->name('usuario.atividades.criar');
+    Route::post('/atividades/criar', [AtividadeController::class, 'salvar'])->name('usuario.atividades.salvar');
+    Route::get('/atividades/{id}', [AtividadeController::class, 'ver'])->name('usuario.atividades.ver');
+    Route::post('/atividades/{id}/deletar', [AtividadeController::class, 'deletar'])->name('usuario.atividades.deletar');
+});
+
+
+/*=============== CATEGORIAS — ADMIN ===============*/
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/categorias', [CategoriaController::class, 'index'])->name('admin.categorias');
+    Route::get('/admin/categorias/criar', [CategoriaController::class, 'criar'])->name('admin.categorias.criar');
+    Route::post('/admin/categorias/criar', [CategoriaController::class, 'salvar'])->name('admin.categorias.salvar');
+    Route::get('/admin/categorias/{id}/editar', [CategoriaController::class, 'editar'])->name('admin.categorias.editar');
+    Route::post('/admin/categorias/{id}/editar', [CategoriaController::class, 'atualizar'])->name('admin.categorias.atualizar');
+    Route::post('/admin/categorias/{id}/deletar', [CategoriaController::class, 'deletar'])->name('admin.categorias.deletar');
 });

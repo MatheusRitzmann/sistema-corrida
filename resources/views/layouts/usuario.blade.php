@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Velox') - Sistema Corrida</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Remix Icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-    <!-- Chart.js -->
+   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Favicon -->
+   
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <style>
@@ -39,7 +38,7 @@
             color: var(--text);
         }
 
-        /*=============== NAVBAR ===============*/
+        /*navbar*/
         .navbar-velox {
             height: var(--navbar-height);
             background: var(--card-bg);
@@ -164,14 +163,14 @@
             border-color: var(--red);
         }
 
-        /*=============== CONTENT ===============*/
+        /*contend*/
         .usuario-content {
             max-width: 900px;
             margin: 1.5rem auto;
             padding: 0 1rem;
         }
 
-        /*=============== CARDS ===============*/
+        /*box*/
         .vx-card {
             background: var(--card-bg);
             border-radius: 16px;
@@ -196,7 +195,7 @@
             color: var(--blue);
         }
 
-        /*=============== METRICS ===============*/
+        /*metricas como pace, distancia etc*/
         .vx-mc {
             background: var(--card-bg);
             border-radius: 14px;
@@ -471,6 +470,10 @@
                 <img src="{{ asset('img/logo.png') }}" alt="Velox">
             </div>
             <span class="navbar-velox__logo-name">Ve<span>lox</span></span>
+        </a>
+
+        <a href="{{ route('usuario.atividades') }}" class="navbar-velox__link {{ request()->routeIs('usuario.atividades*') ? 'active' : '' }}">
+            <i class="ri-run-line"></i> Atividades
         </a>
 
         <div class="navbar-velox__nav">

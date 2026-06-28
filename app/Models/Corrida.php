@@ -21,7 +21,7 @@ class Corrida extends Model
     // Inscrições da corrida
     public function inscricoes()
     {
-        return $this->hasMany(Inscricao::class);
+        return $this->hasMany(Inscricao::class, 'corrida_id', 'id');
     }
 
     // Vagas disponíveis

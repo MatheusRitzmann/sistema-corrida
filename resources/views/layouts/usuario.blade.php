@@ -15,6 +15,15 @@
    
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
+        <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JDZQB4P5DF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDZQB4P5DF');
+</script>
+
     <style>
         :root {
             --blue: #2C8CE8;

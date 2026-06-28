@@ -16,6 +16,15 @@
   
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JDZQB4P5DF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDZQB4P5DF');
+</script>
+
     <style>
         :root {
             --first-color: #004aad;
@@ -368,11 +377,17 @@
 
         <p class="sidebar__section">Gerenciar</p>
 
-        @if(Auth::user()->role === 'master')
-        <a href="{{ route('master.criarAdmin') }}" class="sidebar__link {{ request()->routeIs('master.*') ? 'active' : '' }}">
-            <i class="ri-shield-user-line"></i> Administradores
-        </a>
-        @endif
+         @if(Auth::user()->role === 'master')
+            <a href="{{ route('master.criarAdmin') }}" class="sidebar__link {{ request()->routeIs('master.*') ? 'active' : '' }}">
+        <i class="ri-shield-user-line"></i> Administradores
+            </a>
+             <a href="{{ route('master.corridas') }}" class="sidebar__link {{ request()->routeIs('master.corridas*') ? 'active' : '' }}">
+        <i class="ri-trophy-line"></i> Corridas
+             </a>
+             <a href="{{ route('master.configuracao') }}" class="sidebar__link {{ request()->routeIs('master.configuracao*') ? 'active' : '' }}">
+        <i class="ri-settings-3-line"></i> Configurações
+         </a>
+    @endif
 
         <a href="{{ route('usuarios.index') }}" class="sidebar__link {{ request()->routeIs('usuarios.*') ? 'active' : '' }}">
             <i class="ri-group-line"></i> Usuários

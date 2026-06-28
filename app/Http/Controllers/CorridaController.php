@@ -12,18 +12,15 @@ class CorridaController extends Controller
     // Lista corridas para o usuário
     public function index()
     {
-        $corridas = Corrida::withCount('inscricoes')
-                        ->orderBy('data_horario')
-                        ->get();
-
+        $corridas = Corrida::orderBy('data_horario')->get();
         return view('usuario.corridas.index', compact('corridas'));
     }
 
     // Detalhes da corrida
     public function ver($id)
     {
-        $corrida    = Corrida::withCount('inscricoes')->findOrFail($id);
-        $inscrito   = Inscricao::where('user_id', Auth::id())
+        $corrida  = Corrida::findOrFail($id);
+        $inscrito = Inscricao::where('user_id', Auth::id())
                         ->where('corrida_id', $id)
                         ->first();
 
@@ -33,7 +30,7 @@ class CorridaController extends Controller
     // Lista corridas para o master
     public function indexMaster()
     {
-        $corridas = Corrida::withCount('inscricoes')->orderBy('data_horario')->get();
+        $corridas = Corrida::orderBy('data_horario')->get();
         return view('master.corridas.index', compact('corridas'));
     }
 
@@ -107,7 +104,6 @@ class CorridaController extends Controller
 
         // Upload da nova capa
         if ($request->hasFile('capa')) {
-            // Remove capa antiga
             if ($corrida->capa) {
                 $path = public_path('uploads/corridas/' . $corrida->capa);
                 if (file_exists($path)) unlink($path);
@@ -136,7 +132,6 @@ class CorridaController extends Controller
     {
         $corrida = Corrida::findOrFail($id);
 
-        // Remove capa
         if ($corrida->capa) {
             $path = public_path('uploads/corridas/' . $corrida->capa);
             if (file_exists($path)) unlink($path);

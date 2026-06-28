@@ -12,6 +12,7 @@ use App\Http\Controllers\MetricaController;
 use App\Http\Controllers\SubscricaoController;
 use App\Http\Controllers\CorridaController;
 use App\Http\Controllers\InscricaoController;
+use App\Http\Controllers\ConfiguracaoController;
 
 /*=============== AREA DO LOGIN ===============*/
 
@@ -147,4 +148,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/corridas/{id}/inscrever', [InscricaoController::class, 'inscrever'])->name('usuario.corridas.inscrever');
     Route::post('/corridas/{id}/cancelar', [InscricaoController::class, 'cancelar'])->name('usuario.corridas.cancelar');
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('usuario.inscricoes');
+});
+
+/*=============== CONFIGURAÇÕES — MASTER ===============*/
+Route::middleware(['auth', 'master'])->group(function () {
+    Route::get('/master/configuracao', [ConfiguracaoController::class, 'index'])->name('master.configuracao');
+    Route::post('/master/configuracao', [ConfiguracaoController::class, 'salvar'])->name('master.configuracao.salvar');
 });

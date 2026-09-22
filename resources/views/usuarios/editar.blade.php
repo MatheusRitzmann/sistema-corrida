@@ -1,0 +1,67 @@
+@extends('layouts.admin')
+
+@section('title', 'Editar Usuário')
+@section('page_title', 'Editar Usuário')
+
+@section('content')
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+
+            <!-- Exibe erros -->
+            @if ($errors->any())
+                <div class="alert alert-danger rounded-3 mb-3">
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            <div class="table-card">
+                <form action="{{ route('usuarios.atualizar', $usuario->id) }}" method="POST">
+                    @csrf
+
+                    <!-- Nome -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nome completo</label>
+                        <input type="text" name="name" class="form-control"
+                               value="{{ $usuario->name }}" required>
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">E-mail</label>
+                        <input type="email" name="email" class="form-control"
+                               value="{{ $usuario->email }}" required>
+                    </div>
+
+                    <!-- Tipo de acesso -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Tipo de acesso</label>
+                        <select name="role" class="form-select">
+                            <option value="user"   {{ $usuario->role === 'user'   ? 'selected' : '' }}>Usuário</option>
+                            <option value="admin"  {{ $usuario->role === 'admin'  ? 'selected' : '' }}>Administrador</option>
+                            <option value="master" {{ $usuario->role === 'master' ? 'selected' : '' }}>Master</option>
+                        </select>
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Nova senha <span class="text-muted fw-normal">(deixe em branco para manter)</span></label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn-new">
+                            <i class="ri-save-line"></i> Salvar
+                        </button>
+                        <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary btn-sm">
+                            Voltar
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+@endsection

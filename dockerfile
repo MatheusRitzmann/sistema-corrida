@@ -1,4 +1,4 @@
-FROM php:8.3-cli
+FROM php:8.4-cli
 
 # PHP
 RUN apt-get update && apt-get install -y \
@@ -7,9 +7,13 @@ RUN apt-get update && apt-get install -y \
     zip \
     curl \
     libpq-dev \
-    libzip-dev
+    libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev
 
-RUN docker-php-ext-install pdo pdo_pgsql pgsql zip
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_pgsql pgsql zip gd
 
 # Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -

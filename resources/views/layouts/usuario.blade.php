@@ -497,6 +497,10 @@
             </a>
         </div>
 
+        <a href="{{ route('usuario.chat') }}" class="navbar-velox__link {{ request()->routeIs('usuario.chat*') ? 'active' : '' }}">
+        <i class="ri-robot-line"></i> Assistente
+            </a>
+
         <div class="navbar-velox__user">
             <div class="navbar-velox__avatar">
                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}

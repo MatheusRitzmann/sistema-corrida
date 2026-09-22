@@ -13,6 +13,7 @@ use App\Http\Controllers\SubscricaoController;
 use App\Http\Controllers\CorridaController;
 use App\Http\Controllers\InscricaoController;
 use App\Http\Controllers\ConfiguracaoController;
+use App\Http\Controllers\ChatController;
 
 /*=============== AREA DO LOGIN ===============*/
 
@@ -154,4 +155,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'master'])->group(function () {
     Route::get('/master/configuracao', [ConfiguracaoController::class, 'index'])->name('master.configuracao');
     Route::post('/master/configuracao', [ConfiguracaoController::class, 'salvar'])->name('master.configuracao.salvar');
+});
+
+/*=============== CHAT IA ===============*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('usuario.chat');
+    Route::post('/chat/enviar', [ChatController::class, 'enviar'])->name('usuario.chat.enviar');
+    Route::post('/chat/limpar', [ChatController::class, 'limpar'])->name('usuario.chat.limpar');
 });
